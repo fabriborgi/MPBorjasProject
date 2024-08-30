@@ -1,16 +1,22 @@
 package sensors;
 
-public class Satellite extends checkZone {
+import java.util.ArrayList;
+import java.util.List;
+
+import basements.Basement;
+
+public class Satellite {
 	private double grades;
 	private double sizeArea;
-	private String weather;
+	private String weatherType;
 	private int weatherValue = 0;
+	private List<Basement> basements = new ArrayList<>();
 
-	public Satellite(double grades, double sizeArea, String weather) {
+	public Satellite(double grades, double sizeArea, String weatherType) {
 		super();
 		this.grades = grades;
 		this.sizeArea = sizeArea;
-		this.weather = weather;
+		this.weatherType = weatherType;
 	}
 
 	public double getGrades() {
@@ -29,26 +35,27 @@ public class Satellite extends checkZone {
 		this.sizeArea = sizeArea;
 	}
 
-	public String getWeather() {
-		return weather;
+	public String getWeatherType() {
+		return weatherType;
 	}
 	public int getWeatherValue() {
 		return weatherValue;
 	}
 	public void setWeather(String weather) {
-		this.weather = weather;
+		this.weatherType = weather;
 	}
 
 	public String scan() {
+		
 		if (formulaParameterCheckArea() > 150)
 			return "this area needs intervention";
 		return "this area has a level in the normal range";
 	}
 
 	public void calculateWeather() {
-		if (weather.equals("Snowy") || weather.equals("Stormy"))
+		if (weatherType.equals("Snowy") || weatherType.equals("Stormy"))
 			weatherValue = 10;
-		else if (weather.equals("Rainy") || weather.equals("Windy"))
+		else if (weatherType.equals("Rainy") || weatherType.equals("Windy"))
 			weatherValue = 5;
 		else
 			weatherValue++;
@@ -58,5 +65,7 @@ public class Satellite extends checkZone {
 		calculateWeather();
 		return (weatherValue * grades) / sizeArea;
 	}
+	
+	
 
 }

@@ -1,6 +1,12 @@
 package sensors;
 
-public abstract class checkZone {
+public class CheckMountain extends Satellite{
+	
+	public CheckMountain(double grades, double sizeArea, String weatherType) {
+		super(grades, sizeArea, weatherType);
+		// TODO Auto-generated constructor stub
+	}
+
 	public SensorInterface sensor;
 
 	public void scanning() {
