@@ -10,7 +10,6 @@ public class Satellite {
 	private double sizeArea;
 	private String weatherType;
 	private int weatherValue = 0;
-	private List<Double> values = new ArrayList<>();
 	private List<Basement> basements = new ArrayList<>();
 
 	public Satellite(double grades, double sizeArea, String weatherType) {
@@ -20,25 +19,7 @@ public class Satellite {
 		this.weatherType = weatherType;
 	}
 
-	public double getGrades() {
-		return grades;
-	}
 
-	public void setGrades(double grades) {
-		this.grades = grades;
-	}
-
-	public double getSizeArea() {
-		return sizeArea;
-	}
-
-	public void setSizeArea(double sizeArea) {
-		this.sizeArea = sizeArea;
-	}
-
-	public String getWeatherType() {
-		return weatherType;
-	}
 
 	public int getWeatherValue() {
 		return weatherValue;
@@ -65,14 +46,8 @@ public class Satellite {
 
 	public double formulaParameterCheckArea() {
 		calculateWeather();
-		registerNewParameters((weatherValue * grades) / sizeArea);
-		notifyBasements ();
+		notifyBasements();
 		return (int) (weatherValue * grades) / sizeArea;
-	}
-
-	private void registerNewParameters(double newParameter) {// non credo serva pk non è modo adatto per observer
-		values.add(newParameter);
-
 	}
 
 	public void basementConnection(Basement basement) {
