@@ -11,50 +11,39 @@ import sensors.Satellite;
 public class testBasement {
 
     private Basement basement;
-    private MockSatellite satellite;
-
-    // Classe interna per simulare il comportamento di Satellite
-    private class MockSatellite implements Satellite {
-        private String scanResult;
-
-        public MockSatellite(String scanResult) {
-            this.scanResult = scanResult;
-        }
-
-        @Override
-        public String scan() {
-            return scanResult;
-        }
-
-        // Aggiungiamo un metodo per cambiare il risultato di scan
-        public void setScanResult(String scanResult) {
-            this.scanResult = scanResult;
-        }
-    }
+    private Satellite satellite;
 
     @Before
-    public void setUp() {
-        // Creiamo un'istanza di MockSatellite con un risultato predefinito
-        satellite = new MockSatellite("No issues detected");
-        // Creiamo un'istanza di Basement usando il mock di Satellite
-        basement = new Basement("Florence", satellite);
+    public void init() {
+        // Inizializza il satellite come nel test originale
+        satellite = new Satellite(22.2, 2.0, "Stormy");
+        
+        // Inizializza il basement con la location e il satellite creato
+        basement = new Basement("Main Street", satellite);
     }
 
     @Test
     public void testGetLocation() {
-        assertEquals("Florence", basement.getLocation());
+        // Verifica che il getter restituisca la location corretta
+        assertEquals("Main Street", basement.getLocation());
     }
 
     @Test
     public void testSetLocation() {
-        basement.setLocation("Rome");
-        assertEquals("Rome", basement.getLocation());
+        // Modifica la location e verifica che il cambiamento sia corretto
+        basement.setLocation("Elm Street");
+        assertEquals("Elm Street", basement.getLocation());
     }
 
     @Test
     public void testUpdate() {
-        satellite.setScanResult("All systems operational");
-        basement.update();
-        assertEquals("All systems operational", satellite.scan());
+        // Poiché il metodo update stampa a console, non possiamo testare direttamente l'output
+        // Ma possiamo verificare se il metodo satellite.scan() viene chiamato correttamente
+        // Qui semplicemente controlliamo che non venga sollevata un'eccezione
+        try {
+            basement.update();
+        } catch (Exception e) {
+            fail("The update method should not throw an exception");
+        }
     }
 }
