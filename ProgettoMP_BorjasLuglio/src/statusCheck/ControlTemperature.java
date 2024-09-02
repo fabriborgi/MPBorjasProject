@@ -1,21 +1,31 @@
 package statusCheck;
 
 public class ControlTemperature extends VerifySatellite {
-	private int checkTemperature;
+    private int checkTemperature;
 
-	public ControlTemperature(int checkTemperature) {
-		this.checkTemperature = checkTemperature;
-	}
+    public ControlTemperature(int checkTemperature) {
+        this.checkTemperature = checkTemperature;
+    }
 
-	public boolean check(ControlSensor sensor, ControlTemperature temperature, ControlEnergy energy) {
+    @Override
+    public boolean check(Object param) {
+        // Assicura che il parametro sia del tipo corretto
+        if (param instanceof ControlTemperature) {
+            ControlTemperature temperature = (ControlTemperature) param;
 
-		if (checkTemperature > 80) {
-			System.out.println("The sensor is overheated!");
-			return false;
-		} else if (checkTemperature < 1) {
-			System.out.println("The sensor may be broken!");
-		}
+            if (temperature.checkTemperature > 80) {
+                System.out.println("The sensor is overheated!");
+                return false;
+            } else if (temperature.checkTemperature < 1) {
+                System.out.println("The sensor may be broken!");
+            }
+        }
 
-		return verifyStatusSatellite(sensor, temperature, energy);
-	}
+        // Passa al prossimo handler
+        VerifySatellite next = getNext();
+        if (next != null) {
+            return next.check(param); // Continua la catena con il parametro corrente
+        }
+        return true;
+    }
 }

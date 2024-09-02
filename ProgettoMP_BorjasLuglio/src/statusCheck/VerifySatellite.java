@@ -1,15 +1,15 @@
 package statusCheck;
 
 public abstract class VerifySatellite {
-	private VerifySatellite next;
+    private VerifySatellite next;
 
-	public boolean verifyStatusSatellite(ControlSensor sensor, ControlTemperature temperature, ControlEnergy energy) {
-		if (next == null) {
-			return true;
+    public void setNext(VerifySatellite next) {
+        this.next = next;
+    }
 
-		}
+    protected VerifySatellite getNext() {
+        return next;
+    }
 
-		return next.verifyStatusSatellite(sensor, temperature, energy);
-	}
-
+    public abstract boolean check(Object param);
 }

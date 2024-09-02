@@ -4,33 +4,28 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import statusCheck.ControlEnergy;
+
 import statusCheck.ControlSensor;
-import statusCheck.ControlTemperature;
 
 public class ControlSensorTest {
-
-    private ControlEnergy controlEnergy;
+    
     private ControlSensor controlSensor;
-    private ControlTemperature controlTemperature;
 
     @Before
     public void setUp() {
-        // Inizializza i controlli di default
-        controlEnergy = new ControlEnergy(250); // Energia normale
-        controlTemperature = new ControlTemperature(50); // Temperatura normale
+        controlSensor = new ControlSensor(true); // Sensore attivo
     }
 
     @Test
-    public void testCheckSensorNotWorking() {
-        controlSensor = new ControlSensor(false); // Sensore danneggiato
-        assertFalse("Sensor does not produce data, may have been damaged!", 
-                    controlSensor.check(controlSensor, controlTemperature, controlEnergy));
+    public void testSensorActive() {
+        // Verifica che il controllo passi con un sensore attivo
+        assertTrue(controlSensor.check(controlSensor));
     }
 
     @Test
-    public void testCheckSensorWorking() {
-        controlSensor = new ControlSensor(true); // Sensore funziona
-        assertTrue(controlSensor.check(controlSensor, controlTemperature, controlEnergy));
+    public void testSensorInactive() {
+        // Verifica che il controllo fallisca con un sensore inattivo
+        ControlSensor inactiveSensor = new ControlSensor(false);
+        assertFalse(inactiveSensor.check(inactiveSensor));
     }
 }
