@@ -1,7 +1,7 @@
 package sensors;
 
-public class ScanMountain extends Satellite{
-	
+public class ScanMountain extends Satellite {
+
 	private int aboveSeaLevel;
 
 	public ScanMountain(double grades, double sizeArea, String weatherType, int aboveSeaLevel) {
@@ -16,6 +16,5 @@ public class ScanMountain extends Satellite{
 	public void setAboveSeaLevel(int aboveSeaLevel) {
 		this.aboveSeaLevel = aboveSeaLevel;
 	}
-	
 
 }

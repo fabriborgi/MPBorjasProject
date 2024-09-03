@@ -9,7 +9,6 @@ public class SensorRiver implements SensorInterface {
 
 	@Override
 	public void parameters() {
-		// TODO Auto-generated method stub
 		System.out.println("The river is being scanned");
 
 	}

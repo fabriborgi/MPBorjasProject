@@ -1,7 +1,7 @@
 package sensors;
 
 public class SensorForest implements SensorInterface {
-	
+
 	@Override
 	public void createSensor() {
 		System.out.println("Preparation forest scan");

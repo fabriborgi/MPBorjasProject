@@ -19,8 +19,6 @@ public class Satellite {
 		this.weatherType = weatherType;
 	}
 
-
-
 	public int getWeatherValue() {
 		return weatherValue;
 	}

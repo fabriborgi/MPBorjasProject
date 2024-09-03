@@ -8,24 +8,22 @@ import org.junit.Test;
 import statusCheck.ControlSensor;
 
 public class ControlSensorTest {
-    
-    private ControlSensor controlSensor;
 
-    @Before
-    public void setUp() {
-        controlSensor = new ControlSensor(true); // Sensore attivo
-    }
+	private ControlSensor controlSensor;
 
-    @Test
-    public void testSensorActive() {
-        // Verifica che il controllo passi con un sensore attivo
-        assertTrue(controlSensor.check(controlSensor));
-    }
+	@Before
+	public void setUp() {
+		controlSensor = new ControlSensor(true);
+	}
 
-    @Test
-    public void testSensorInactive() {
-        // Verifica che il controllo fallisca con un sensore inattivo
-        ControlSensor inactiveSensor = new ControlSensor(false);
-        assertFalse(inactiveSensor.check(inactiveSensor));
-    }
+	@Test
+	public void testSensorActive() {
+		assertTrue(controlSensor.check(controlSensor));
+	}
+
+	@Test
+	public void testSensorInactive() {
+		ControlSensor inactiveSensor = new ControlSensor(false);
+		assertFalse(inactiveSensor.check(inactiveSensor));
+	}
 }

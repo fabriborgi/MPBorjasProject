@@ -26,12 +26,12 @@ public class SensorTest {
 
 	@Test
 	public void testcalculateWeather() {
-		//exercise
+		// exercise
 		satellite.calculateWeather();
-		//verify
+		// verify
 		assertEquals(10, satellite.getWeatherValue());
 	}
-	
+
 	@Test
 	public void testScan() {
 		assertSame("this area has a level in the normal range", satellite.scan());
