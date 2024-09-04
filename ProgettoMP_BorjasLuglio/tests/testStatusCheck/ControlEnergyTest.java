@@ -1,35 +1,35 @@
 package testStatusCheck;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import statusCheck.ControlEnergy;
 
 public class ControlEnergyTest {
 
-	private ControlEnergy controlEnergy;
+    private ControlEnergy lowEnergyControl;
+    private ControlEnergy highEnergyControl;
+    private ControlEnergy adequateEnergyControl;
 
-	@Before
-	public void setUp() {
-		controlEnergy = new ControlEnergy(250);
-	}
+    @Before
+    public void setUp() {
+        lowEnergyControl = new ControlEnergy(200);
+        highEnergyControl = new ControlEnergy(350);
+        adequateEnergyControl = new ControlEnergy(250);
+    }
 
-	@Test
-	public void testEnergySufficient() {
-		assertTrue(controlEnergy.check(new ControlEnergy(250)));
-	}
+    @Test
+    public void testCheckLowEnergy() {
+        assertFalse(lowEnergyControl.check(new ControlEnergy(200)));
+    }
 
-	@Test
-	public void testEnergyInsufficient() {
-		ControlEnergy lowEnergy = new ControlEnergy(230);
-		assertFalse(lowEnergy.check(lowEnergy));
-	}
+    @Test
+    public void testCheckHighEnergy() {
+        assertTrue(highEnergyControl.check(new ControlEnergy(350)));
+    }
 
-	@Test
-	public void testEnergyOverloaded() {
-		ControlEnergy highEnergy = new ControlEnergy(310);
-		assertTrue(highEnergy.check(highEnergy));
-	}
+    @Test
+    public void testCheckAdequateEnergy() {
+        assertTrue(adequateEnergyControl.check(new ControlEnergy(250)));
+    }
 }

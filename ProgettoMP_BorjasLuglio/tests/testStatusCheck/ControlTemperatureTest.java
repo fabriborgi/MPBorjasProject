@@ -1,35 +1,35 @@
 package testStatusCheck;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import statusCheck.ControlTemperature;
 
 public class ControlTemperatureTest {
 
-	private ControlTemperature controlTemperature;
+    private ControlTemperature lowTempControl;
+    private ControlTemperature highTempControl;
+    private ControlTemperature normalTempControl;
 
-	@Before
-	public void setUp() {
-		controlTemperature = new ControlTemperature(25);
-	}
+    @Before
+    public void setUp() {
+        lowTempControl = new ControlTemperature(0);
+        highTempControl = new ControlTemperature(90);
+        normalTempControl = new ControlTemperature(25);
+    }
 
-	@Test
-	public void testTemperatureNormal() {
-		assertTrue(controlTemperature.check(controlTemperature));
-	}
+    @Test
+    public void testCheckHighTemperature() {
+        assertFalse(highTempControl.check(new ControlTemperature(90)));
+    }
 
-	@Test
-	public void testTemperatureHigh() {
-		ControlTemperature highTemperature = new ControlTemperature(85);
-		assertFalse(highTemperature.check(highTemperature));
-	}
+    @Test
+    public void testCheckLowTemperature() {
+        assertTrue(lowTempControl.check(new ControlTemperature(0)));
+    }
 
-	@Test
-	public void testTemperatureLow() {
-		ControlTemperature lowTemperature = new ControlTemperature(-5);
-		assertTrue(lowTemperature.check(lowTemperature));
-	}
+    @Test
+    public void testCheckNormalTemperature() {
+        assertTrue(normalTempControl.check(new ControlTemperature(25)));
+    }
 }
