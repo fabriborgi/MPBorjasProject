@@ -6,20 +6,20 @@ import sensors.SensorMountain;
 
 public class SensorMountainTest {
 
-    private SensorMountain sensorMountain;
+	private SensorMountain sensorMountain;
 
-    @Before
-    public void init() {
-        sensorMountain = new SensorMountain();
-    }
+	@Before
+	public void init() {
+		sensorMountain = new SensorMountain();
+	}
 
-    @Test
-    public void testCreateSensor() {
-        sensorMountain.createSensor();
-    }
+	@Test
+	public void testCreateSensor() {
+		sensorMountain.createSensor();
+	}
 
-    @Test
-    public void testParameters() {
-        sensorMountain.parameters();
-    }
+	@Test
+	public void testParameters() {
+		sensorMountain.parameters();
+	}
 }

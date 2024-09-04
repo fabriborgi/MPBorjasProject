@@ -17,18 +17,18 @@ public class testBasement {
 	public void init() {
 		satellite = new Satellite(22.2, 2.0, "Stormy");
 
-		basement = new Basement("Main Street", satellite);
+		basement = new Basement("Florence", satellite);
 	}
 
 	@Test
 	public void testGetLocation() {
-		assertEquals("Main Street", basement.getLocation());
+		assertEquals("Florence", basement.getLocation());
 	}
 
 	@Test
 	public void testSetLocation() {
-		basement.setLocation("Elm Street");
-		assertEquals("Elm Street", basement.getLocation());
+		basement.setLocation("Naples");
+		assertEquals("Naples", basement.getLocation());
 	}
 
 	@Test

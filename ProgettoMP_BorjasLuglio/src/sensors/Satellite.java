@@ -48,11 +48,11 @@ public class Satellite {
 		return (int) (weatherValue * grades) / sizeArea;
 	}
 
-	public void basementConnection(Basement basement) {
+	public void addBasements(Basement basement) {
 		basements.add(basement);
 	}
 
-	public void basementDisconnection(Basement basement) {
+	public void removeBasements(Basement basement) {
 		basements.remove(basement);
 	}
 

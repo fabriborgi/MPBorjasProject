@@ -26,6 +26,4 @@ public class Basement implements BasementsInterface {
 		System.out.println("Receving new datas from satellite saying: " + satellite.scan() + "status satellite:");
 	}
 
-
-
 }

@@ -1,7 +1,7 @@
 package basements;
 
 public interface BasementsInterface {
-	
-	void update ();
+
+	void update();
 
 }

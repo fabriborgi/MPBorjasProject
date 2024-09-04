@@ -16,19 +16,14 @@ public class SensorTest {
 		satellite = new Satellite(22.2, 2.0, "Stormy");
 	}
 
-	// Setup test
-
 	@Test
 	public void testformulaParameterCheckArea() {
-		// Start
 		assertEquals(satellite.formulaParameterCheckArea(), ((22.2 * 10) / 2), 0);
 	}
 
 	@Test
 	public void testcalculateWeather() {
-		// exercise
 		satellite.calculateWeather();
-		// verify
 		assertEquals(10, satellite.getWeatherValue());
 	}
 
